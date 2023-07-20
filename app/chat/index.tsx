@@ -1,9 +1,11 @@
 import { ChannelList } from "stream-chat-expo";
 
+
 import { useRouter } from "expo-router";
 
 const ChatScreen = () => {
   const router = useRouter();
+
 
   return (
     <ChannelList

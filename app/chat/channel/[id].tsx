@@ -30,6 +30,7 @@ const ChannelScreen = () => {
       <MessageList />
       <MessageInput />
     </Channel>
+
   );
 };
 
