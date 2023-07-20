@@ -1,11 +1,12 @@
-import { View, Text } from "react-native";
+import { View, Text, ActivityIndicator } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useLocalSearchParams } from "expo-router";
 import { Channel as ChannelType } from "stream-chat";
 import { useChatContext } from "stream-chat-expo";
+import { Channel, MessageInput, MessageList } from "stream-chat-expo";
 
 const ChannelScreen = () => {
-  const [channel, setChannel] = useState<ChannelType>();
+  const [channel, setChannel] = useState<ChannelType | null>(null);
 
   const { client } = useChatContext();
 
@@ -20,10 +21,15 @@ const ChannelScreen = () => {
 
     fetchChannel();
   }, [id]);
+
+  if (!channel) {
+    return <ActivityIndicator />;
+  }
   return (
-    <View>
-      <Text>ChannelScreen</Text>
-    </View>
+    <Channel channel={channel}>
+      <MessageList />
+      <MessageInput />
+    </Channel>
   );
 };
 
