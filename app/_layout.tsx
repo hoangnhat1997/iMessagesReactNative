@@ -3,7 +3,7 @@ import { AuthProvider } from "../src/context/auth";
 export default function RootLayout() {
   return (
     <AuthProvider>
-      <Slot />;
+      <Slot />
     </AuthProvider>
   );
 }
