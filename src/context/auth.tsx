@@ -6,7 +6,7 @@ export type User = {
   id: number;
   username: string;
   name: string;
-  //   streamToken: string;
+  streamToken: string;
 };
 
 type AuthContextType = {
@@ -27,7 +27,7 @@ export function useAuth() {
 }
 
 // This hook will protect the route access based on user authentication.
-function useProtectedRoute(user) {
+function useProtectedRoute(user: User) {
   const segments = useSegments();
   const rootNavigation = useNavigation();
   const [isNavigationReady, setNavigationReady] = useState(false);
@@ -68,7 +68,7 @@ export function AuthProvider(props) {
 
   const signIn = async (username: string) => {
     const newUser = await login(username);
-    console.log(newUser);
+    // console.log(newUser);
     setUser(newUser);
     //setUser({ id: 1, username: "Nhat", name: "Nhat" });
   };
